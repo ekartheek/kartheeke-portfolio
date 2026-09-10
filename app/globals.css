@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #06090e;
+  --surface-color: #0b121e;
+  --primary-color: #0284c7;
+  --accent-color: #38bdf8;
+  --border-color: #162438;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: #f8fafc;
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+@media (pointer: fine) {
+  body, button, a, [role="button"], input {
+    cursor: none !important;
+  }
+}
+
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #06090e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
+
+/* Subtle NOC Grid Background */
+.noc-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(30, 41, 59, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 41, 59, 0.25) 1px, transparent 1px);
+}
+
+.noc-grid-dense {
+  background-size: 16px 16px;
+  background-image: 
+    linear-gradient(to right, rgba(30, 41, 59, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 41, 59, 0.15) 1px, transparent 1px);
+}
+
+.bg-radial-vignette {
+  background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(6, 9, 14, 0.85) 85%);
+}
+
+
+/* Glow effects without purple */
+.glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(2, 132, 199, 0.4);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4);
+}
+
+.glow-amber {
+  box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.4);
+}
+
+/* Laser data pulse animation */
+@keyframes data-pulse {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-data-stream {
+  stroke-dasharray: 6 12;
+  animation: data-pulse 1.2s linear infinite;
+}
+
+/* Terminal Scanline overlay */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.01),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.01)
+  );
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+}
