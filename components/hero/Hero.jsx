@@ -41,6 +41,7 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 pt-1"
         >
           {[
+            { label: 'CREDENTIAL', val: 'CCNP ENTERPRISE', color: 'text-sky-300' },
             { label: 'UPTIME SLA', val: '99.999%', color: 'text-emerald-400' },
             { label: 'CORE LATENCY', val: '< 0.4ms', color: 'text-sky-400' },
             { label: 'SCALE', val: '60,000+ USERS', color: 'text-white' },

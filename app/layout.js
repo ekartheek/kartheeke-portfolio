@@ -3,9 +3,9 @@ import { RoleThemeProvider } from '../context/RoleThemeContext';
 import CustomCursor from '../components/shared/CustomCursor';
 
 export const metadata = {
-  title: 'KARTHEEK E — Enterprise & Cloud Network Systems Engineer',
-  description: 'Enterprise Network Engineering, Cloud Transit Architecture, Zero-Trust Perimeter, and High-Availability Infrastructure. 6 years production experience across NYS ITS, JPMorganChase, and ADP.',
-  keywords: ['Network Engineer', 'Cloud Networking', 'BGP', 'OSPF', 'Cisco Nexus', 'Zero-Trust', 'Network Security', 'Kartheek E'],
+  title: 'KARTHEEK E, CCNP — Enterprise & Cloud Network Systems Engineer',
+  description: 'Enterprise Network Engineering, Cisco Certified Network Professional (CCNP Enterprise), Cloud Transit Architecture, Zero-Trust Perimeter, and High-Availability Infrastructure. 6 years production experience across NYS ITS, JPMorganChase, and ADP.',
+  keywords: ['CCNP', 'CCNP Enterprise', 'Cisco Certified Network Professional', 'Network Engineer', 'Cloud Networking', 'BGP', 'OSPF', 'Cisco Nexus', 'Zero-Trust', 'Network Security', 'Kartheek E'],
   authors: [{ name: 'Kartheek E' }],
 };
 

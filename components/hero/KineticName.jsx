@@ -7,13 +7,15 @@ export default function KineticName() {
   return (
     <div className="relative select-none flex flex-col items-center">
       {/* Executive Location & Status Ticker */}
-      <div className="flex items-center gap-2.5 text-xs font-mono tracking-widest text-slate-400 uppercase mb-3">
+      <div className="flex flex-wrap items-center justify-center gap-2.5 text-xs font-mono tracking-widest text-slate-400 uppercase mb-3">
         <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400" />
         <span className="text-white font-semibold">EAST GREENBUSH, NY</span>
         <span className="text-slate-600">·</span>
         <span className="text-sky-400 font-semibold">CURRENTLY @ NYS ITS</span>
         <span className="text-slate-600 hidden sm:inline">·</span>
         <span className="text-slate-400 hidden sm:inline">6 YRS PRODUCTION EXPERIENCE</span>
+        <span className="text-slate-600 hidden md:inline">·</span>
+        <span className="text-emerald-400 font-bold hidden md:inline">CCNP CERTIFIED</span>
       </div>
 
       {/* Dominant Clean Kinetic Master Name */}
@@ -47,6 +49,27 @@ export default function KineticName() {
       >
         NETWORK ENGINEER · ENTERPRISE, DATA CENTER & HYBRID-CLOUD
       </motion.div>
+
+      {/* Verified Cisco CCNP Credential Pill */}
+      <motion.a
+        href="#protocols"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.25, duration: 0.6 }}
+        className="mt-3.5 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#081324]/90 hover:bg-[#0a182e] border border-sky-500/50 hover:border-sky-400 transition-all shadow-lg shadow-sky-950/40 text-xs font-mono group cursor-pointer"
+      >
+        <span className="flex h-2 w-2 relative">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+        </span>
+        <span className="text-slate-300 font-semibold group-hover:text-white transition-colors">
+          CISCO CERTIFIED NETWORK PROFESSIONAL
+        </span>
+        <span className="text-slate-600">·</span>
+        <span className="text-sky-300 font-bold tracking-wider group-hover:text-sky-200 transition-colors">
+          CCNP ENTERPRISE
+        </span>
+      </motion.a>
     </div>
   );
 }

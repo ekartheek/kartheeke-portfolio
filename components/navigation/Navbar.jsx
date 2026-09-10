@@ -84,7 +84,7 @@ export default function Navbar() {
             onClick={() => audioEngine.playClick()}
             className="text-xs font-mono font-bold text-white hover:text-sky-400 transition-colors tracking-wider"
           >
-            KARTHEEK E <span className="text-[10px] text-slate-500 font-normal hidden sm:inline">// NET.ARCHITECT</span>
+            KARTHEEK E <span className="text-[10px] text-sky-400 font-semibold hidden sm:inline">// CCNP · NET.ARCHITECT</span>
           </a>
         </div>
       </div>

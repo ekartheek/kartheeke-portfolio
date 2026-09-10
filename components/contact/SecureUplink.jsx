@@ -122,6 +122,27 @@ export default function SecureUplink() {
             </div>
             <span className="text-[11px] font-mono text-emerald-400">Verified Profile</span>
           </div>
+
+          {/* Official Cisco CCNP Certification Card */}
+          <div className="bg-[#080d17] border border-sky-800/60 rounded-xl p-5 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-sky-950 border border-sky-600 flex items-center justify-center text-sky-400 flex-shrink-0">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-[10px] font-mono text-sky-400 uppercase font-bold">Official Accreditation</div>
+                <div className="text-sm font-mono font-bold text-white">
+                  Cisco Certified Network Professional
+                </div>
+                <div className="text-[11px] font-mono text-slate-400">
+                  CCNP Enterprise · Dual-Stack Core Routing & Switching
+                </div>
+              </div>
+            </div>
+            <span className="self-start sm:self-auto px-2.5 py-1 rounded bg-emerald-950/80 border border-emerald-600/50 text-[10px] font-mono text-emerald-300 font-bold whitespace-nowrap">
+              Active &amp; Verified
+            </span>
+          </div>
         </div>
 
         {/* Interactive Telemetry Uplink Console */}
@@ -172,7 +193,7 @@ export default function SecureUplink() {
       {/* Footer System Credits */}
       <div className="mt-16 pt-8 border-t border-[#141f32] flex flex-wrap items-center justify-between text-xs font-mono text-slate-500 gap-4">
         <div>
-          KARTHEEK E // ENTERPRISE NETWORK SYSTEMS ARCHITECTURE
+          KARTHEEK E, CCNP // ENTERPRISE NETWORK SYSTEMS ARCHITECTURE
         </div>
         <div>
           STATUS: 99.999% SLA // PACKET LOSS: 0.00% // LOC: USA

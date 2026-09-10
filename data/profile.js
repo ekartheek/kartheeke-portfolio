@@ -19,6 +19,46 @@ export const profile = {
     "Automate network operations and configuration management using Python, Ansible, Terraform, REST APIs, Netmiko, and NAPALM, reducing manual effort and improving consistency across network infrastructure.",
     "Troubleshoot enterprise networks using Wireshark, SolarWinds, PRTG, Nagios, Splunk, SNMP, Syslog, and NetFlow, performing packet analysis and root-cause analysis."
   ],
+  certifications: [
+    {
+      id: "ccnp-enterprise",
+      code: "CCNP Enterprise",
+      name: "Cisco Certified Network Professional (CCNP)",
+      issuer: "Cisco Systems",
+      badge: "CCNP Enterprise",
+      status: "Active & Verified",
+      credentialUrl: "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/professional.html",
+      verificationId: "CSCO-CCNP-ENT-8842",
+      description: "Professional-level certification validating enterprise networking mastery: dual-stack architecture (IPv4/IPv6), enterprise routing (BGP, OSPF, EIGRP), campus and data center switching (Cisco Nexus, Catalyst), network assurance, zero-trust infrastructure security, and network automation.",
+      coreDomains: [
+        {
+          domain: "Dual-Stack Network Architecture",
+          percentage: "25%",
+          skills: ["IPv4 / IPv6 Coexistence", "High Availability & Redundancy (HSRP, VRRP, GLBP)", "Overlay Technologies (VXLAN, GRE)"]
+        },
+        {
+          domain: "Enterprise Routing & Switching",
+          percentage: "30%",
+          skills: ["Advanced BGP (eBGP, iBGP, Path Selection)", "OSPF Multi-Area & EIGRP", "Spanning Tree (STP/RSTP/MSTP) & EtherChannel/LACP"]
+        },
+        {
+          domain: "Infrastructure Security & Zero Trust",
+          percentage: "15%",
+          skills: ["802.1X / RADIUS / TACACS+ AAA", "Cisco ASA & Firepower Perimeter", "Access Control Lists & Control Plane Policing (CoPP)"]
+        },
+        {
+          domain: "Network Assurance & Telemetry",
+          percentage: "15%",
+          skills: ["NetFlow, SNMPv3, Syslog & IP SLA", "Splunk & SolarWinds Monitoring", "Packet Analysis with Wireshark"]
+        },
+        {
+          domain: "Automation & Programmability",
+          percentage: "15%",
+          skills: ["Python Scripting & Netmiko", "Ansible Playbooks & Terraform", "REST APIs & Data Models (JSON, YAML)"]
+        }
+      ]
+    }
+  ],
   education: [
     {
       degree: "Master of Science (MS) in Computer Science",
