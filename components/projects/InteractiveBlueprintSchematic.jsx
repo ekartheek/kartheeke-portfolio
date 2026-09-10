@@ -350,7 +350,7 @@ export default function InteractiveBlueprintSchematic({
             const opacity = highlighted ? 1 : 0.3;
 
             // Dimensions for lighter, sleeker node
-            const boxW = 132;
+            const boxW = 142;
             const boxH = 46;
             const boxX = node.x - boxW / 2;
             const boxY = node.y - 11;
@@ -405,12 +405,12 @@ export default function InteractiveBlueprintSchematic({
                   x={boxX + 20}
                   y={boxY + 19}
                   fill={isSelected ? '#ffffff' : '#f8fafc'}
-                  fontSize="9.5"
+                  fontSize={node.name.length > 20 ? '8' : node.name.length > 16 ? '8.5' : '9.5'}
                   fontFamily="monospace"
                   fontWeight="bold"
-                  letterSpacing="0.2"
+                  letterSpacing="0.1"
                 >
-                  {node.name.length > 17 ? node.name.slice(0, 16) + '…' : node.name}
+                  {node.name.length > 23 ? node.name.slice(0, 22) + '…' : node.name}
                 </text>
 
                 {/* Node Subtitle / Protocol Tag */}

@@ -14,7 +14,8 @@ import {
   SlidersHorizontal,
   ChevronRight,
   Terminal,
-  Activity
+  Activity,
+  Info
 } from 'lucide-react';
 
 export default function ProjectSection() {
@@ -36,13 +37,17 @@ export default function ProjectSection() {
       <div className="mb-8">
         <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest uppercase text-emerald-400 mb-2">
           <ShieldCheck className="w-4 h-4" />
-          <span>PRODUCTION ARCHITECTURE // VERIFIED CLIENT ENGAGEMENTS</span>
+          <span>PRODUCTION ARCHITECTURE // DOMAIN PATTERNS</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-mono font-black text-white tracking-tight uppercase">
           ENTERPRISE NETWORK BLUEPRINTS
         </h2>
         <p className="mt-2 text-sm sm:text-base text-slate-400 max-w-3xl leading-relaxed">
           Interactive architectural schematics engineered across statewide public-safety systems, Tier-1 low-latency trading cores, and global multi-tenant enterprise operations.
+        </p>
+        <p className="mt-2.5 text-xs font-mono text-slate-400 max-w-3xl leading-relaxed flex items-start sm:items-center gap-2 bg-[#0a1322]/60 border border-[#162740] px-3 py-2 rounded-lg">
+          <Info className="w-4 h-4 text-sky-400 shrink-0 mt-0.5 sm:mt-0" />
+          <span>Representative reference design based on public vendor architecture patterns. All addresses, hostnames, and topologies are illustrative. Not derived from any employer environment.</span>
         </p>
       </div>
 
@@ -178,7 +183,7 @@ export default function ProjectSection() {
           {/* Quick Technical Stack Badges */}
           <div className="pt-2">
             <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-2">
-              VERIFIED CORE TECHNOLOGIES & PROTOCOLS
+              CORE TECHNOLOGIES & PROTOCOLS
             </div>
             <div className="flex flex-wrap gap-1.5">
               {activeBlueprint.schematicLayers.map((l, i) => (

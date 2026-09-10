@@ -20,25 +20,25 @@ export const blueprints = [
       { id: 0, title: "CARRIER INGRESS", x: 90 },
       { id: 1, title: "EDGE SECURITY", x: 290 },
       { id: 2, title: "DATACENTER CORE", x: 490 },
-      { id: 3, title: "CITIZEN WORKLOADS", x: 690 }
+      { id: 3, title: "PRODUCTION WORKLOADS", x: 690 }
     ],
     nodes: [
       // Zone 0: Carrier Ingress
       { id: "mpls-primary", name: "10G MPLS Primary", sub: "Carrier Trunk A", zone: 0, x: 90, y: 110, layer: "L1 / Edge", ip: "198.51.100.1/30", role: "Primary WAN Circuit", spec: "AS65001 BGP Peered, Weight 200" },
       { id: "dia-backup", name: "10G DIA Secondary", sub: "Carrier Trunk B", zone: 0, x: 90, y: 225, layer: "L1 / Edge", ip: "203.0.113.1/30", role: "Direct Internet Backup", spec: "AS65002 BGP Peered, Weight 100" },
-      { id: "regional-pop", name: "Albany/NYC POPs", sub: "State WAN Hubs", zone: 0, x: 90, y: 340, layer: "L1 / Edge", ip: "10.240.0.0/16", role: "Regional Aggregation", spec: "Dual-homed fiber ring with carrier diversity" },
+      { id: "regional-pop", name: "Primary / Secondary POP", sub: "WAN Hubs", zone: 0, x: 90, y: 340, layer: "L1 / Edge", ip: "10.240.0.0/16", role: "Regional Aggregation", spec: "Dual-homed fiber ring with carrier diversity" },
       // Zone 1: Perimeter Security
       { id: "ngfw-01", name: "Palo Alto NGFW-01", sub: "Primary Active", zone: 1, x: 290, y: 120, layer: "L4-L7 / Security", ip: "10.240.1.1", role: "Stateful App-ID Inspection", spec: "Active HA, Threat Prevention, IPsec terminating" },
       { id: "ngfw-02", name: "Palo Alto NGFW-02", sub: "Standby Hot-Sync", zone: 1, x: 290, y: 240, layer: "L4-L7 / Security", ip: "10.240.1.2", role: "HA Standby Engine", spec: "Sub-second HA state table sync & failover" },
       { id: "ztna-gw", name: "Zero-Trust Edge", sub: "Identity Broker", zone: 1, x: 290, y: 345, layer: "L4-L7 / Security", ip: "10.240.5.10", role: "Contextual Access Gateway", spec: "MFA enforcement, TLS 1.3 decryption proxy" },
       // Zone 2: Datacenter Core
-      { id: "nexus-vpc-1", name: "Nexus 9336C Core-1", sub: "vPC Primary", zone: 2, x: 490, y: 130, layer: "L2 / Transport", ip: "10.240.10.1", role: "Core Distribution Switch", spec: "OSPF Area 0, VRF: GovNet, MTU 9216" },
+      { id: "nexus-vpc-1", name: "Nexus 9336C Core-1", sub: "vPC Primary", zone: 2, x: 490, y: 130, layer: "L2 / Transport", ip: "10.240.10.1", role: "Core Distribution Switch", spec: "OSPF Area 0, VRF: CoreNet, MTU 9216" },
       { id: "nexus-vpc-2", name: "Nexus 9336C Core-2", sub: "vPC Peer", zone: 2, x: 490, y: 250, layer: "L2 / Transport", ip: "10.240.10.2", role: "Core Distribution Switch", spec: "100G vPC Peer-Link, Zero packet loss" },
-      { id: "vrf-router", name: "GovNet VRF Core", sub: "L3 Isolation", zone: 2, x: 490, y: 345, layer: "L3 / Routing", ip: "10.240.20.1", role: "Multi-Agency VRF Mesh", spec: "MP-BGP EVPN segregation across 50+ departments" },
-      // Zone 3: Citizen Workloads
-      { id: "ny-gov-portal", name: "NY.gov Citizen Portal", sub: "Public Facing", zone: 3, x: 690, y: 110, layer: "L4-L7 / Security", ip: "172.16.10.0/24", role: "Citizen Web Services", spec: "F5 BIG-IP Load Balanced, Anycast routed" },
-      { id: "dmv-hub", name: "DMV Transaction Hub", sub: "Agency Cluster", zone: 3, x: 690, y: 225, layer: "L3 / Routing", ip: "172.16.20.0/24", role: "Real-time Vehicle/ID DB", spec: "Encrypted micro-segmented DB transactions" },
-      { id: "agency-enclave", name: "Taxation & Finance", sub: "Isolated VRF", zone: 3, x: 690, y: 340, layer: "L2 / Transport", ip: "172.16.30.0/24", role: "Critical Fiscal Engine", spec: "Strict ACL zero-trust perimeter, audited L3 logs" }
+      { id: "vrf-router", name: "Segmented Core VRF", sub: "L3 Isolation", zone: 2, x: 490, y: 345, layer: "L3 / Routing", ip: "10.240.20.1", role: "Multi-Agency VRF Mesh", spec: "MP-BGP EVPN segregation across isolated departments" },
+      // Zone 3: Production Workloads
+      { id: "ny-gov-portal", name: "Public-Facing Web Tier", sub: "Public Facing", zone: 3, x: 690, y: 110, layer: "L4-L7 / Security", ip: "172.16.10.0/24", role: "Public Web Services", spec: "F5 BIG-IP Load Balanced, Anycast routed" },
+      { id: "dmv-hub", name: "Transactional Agency Cluster", sub: "Agency Cluster", zone: 3, x: 690, y: 225, layer: "L3 / Routing", ip: "172.16.20.0/24", role: "Real-time Vehicle/ID DB", spec: "Encrypted micro-segmented DB transactions" },
+      { id: "agency-enclave", name: "Regulated Data VRF", sub: "Isolated VRF", zone: 3, x: 690, y: 340, layer: "L2 / Transport", ip: "172.16.30.0/24", role: "Critical Fiscal Engine", spec: "Strict ACL zero-trust perimeter, audited L3 logs" }
     ],
     links: [
       { source: "mpls-primary", target: "ngfw-01", type: "primary", speed: "10 Gbps", protocol: "BGP AS65001" },
@@ -53,14 +53,14 @@ export const blueprints = [
       { source: "nexus-vpc-1", target: "ny-gov-portal", type: "workload", speed: "10 Gbps", protocol: "VXLAN Encap" },
       { source: "nexus-vpc-1", target: "dmv-hub", type: "workload", speed: "10 Gbps", protocol: "802.1Q VLAN 120" },
       { source: "nexus-vpc-2", target: "dmv-hub", type: "workload", speed: "10 Gbps", protocol: "802.1Q VLAN 120" },
-      { source: "nexus-vpc-2", target: "agency-enclave", type: "workload", speed: "10 Gbps", protocol: "VRF GovNet" },
+      { source: "nexus-vpc-2", target: "agency-enclave", type: "workload", speed: "10 Gbps", protocol: "VRF Segmented" },
       { source: "vrf-router", target: "agency-enclave", type: "workload", speed: "10 Gbps", protocol: "Zero-Trust ACL" }
     ],
     simulation: {
       title: "Simulate Carrier Fiber Cut",
       buttonText: "Simulate Carrier A Fiber Cut",
       resetText: "Restore Primary Circuit",
-      impactSummary: "Carrier A primary link severed. BGP instantly withdraws routes via MED attribute; traffic seamlessly reroutes via Carrier B DIA in < 2.4s with 0 lost citizen sessions.",
+      impactSummary: "Carrier A primary link severed. BGP instantly withdraws routes via MED attribute; traffic seamlessly reroutes via Carrier B DIA in < 2.4s with 0 lost production sessions.",
       failedLink: { source: "mpls-primary", target: "ngfw-01" },
       activeFallbackLink: { source: "dia-backup", target: "ngfw-02" }
     },
@@ -70,7 +70,7 @@ export const blueprints = [
       { layer: "L3 / Routing", spec: "BGP dynamic multihomed peering, OSPF Area 0 backbone, MP-BGP VRF segmentation", highlightNodes: ["vrf-router", "nexus-vpc-1", "dmv-hub"] },
       { layer: "L4-L7 / Security", spec: "Palo Alto NGFW active/standby clusters, ZTNA proxy, and TLS 1.3 deep inspection", highlightNodes: ["ngfw-01", "ngfw-02", "ztna-gw", "ny-gov-portal"] }
     ],
-    humanNotes: "Supporting IT systems for millions of New York citizens means zero tolerance for blackouts. When unexpected fiber cuts occur at carrier levels, dynamic BGP weight and MED attributes instantly route traffic around degraded paths without interrupting citizen portal services.",
+    humanNotes: "Supporting mission-critical enterprise and public sector infrastructure means zero tolerance for blackouts. When unexpected fiber cuts occur at carrier levels, dynamic BGP weight and MED attributes instantly route traffic around degraded paths without interrupting production web services.",
     keyActions: [
       "Designed and supported enterprise network infrastructure across AWS hybrid-cloud environments, connecting state data centers, agency networks, and cloud workloads through secure and highly available connectivity.",
       "Configured AWS VPC, Subnets, Route Tables, Security Groups, NACLs, Transit Gateway, Direct Connect, and VPN to provide secure and resilient connectivity between on-premises and cloud environments.",
